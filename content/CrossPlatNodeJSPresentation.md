@@ -6,6 +6,10 @@ TODO:
 2. Test internet
 3. Prepare json
 
+Note:
+test
+asdf
+
 ===
 
 ## Cross Platform Tools with NodeJS
@@ -24,13 +28,13 @@ TODO:
 
 ===
 
-## What about other platforms?
+## What about platforms?
 
 - Python
 - Ruby
-- Go
 - C#
 - Java
+- etc...
 
 ===
 
@@ -50,10 +54,11 @@ TODO:
 - ... too many to list ...
 ===
 
-## Less awesome - but sameless plug
+## Less awesome - but shameless plug
 
 - staxmanade/[skypeit](https://github.com/staxmanade/skypeit)
 - staxmanade/[diffxcodetargets](https://github.com/staxmanade/diffxcodetargets)
+- togglejs/[toggle](https://github.com/togglejs/toggle)
 - approvals/[approvals.nodejs](https://github.com/approvals/approvals.nodejs)
 
 ===
@@ -73,13 +78,40 @@ TODO:
 
 ===
 
-## Pathing
+## \Paths/
 
-How to deal with pathing in Linux/windows
+`*nix paths !== Windows paths`
+
+https://gist.github.com/domenic/2790533
+
+==
+
+## Path manipulation
+
+<img src="/images/thumbsDown.png" class='emoji' />
+
+    var path = "foo" + "/" + "bar";
+
+<hr>
+
+<img src="/images/thumbsUp.png" class='emoji' />
+
+    var path = path.join("foo", "bar");
+
+==
+
+# path module
+
+
+    path.normalize(...)
+    path.resolve(...)
+    path.join(...)
+
+Note: path.resolve
 
 ===
 
-## Automated Tests
+## Testing
 
 Running unit tests on Travic-CI for mac & linux and AppVeyor for Windows
 
@@ -90,3 +122,8 @@ Running unit tests on Travic-CI for mac & linux and AppVeyor for Windows
  - Mocha
  - Approvals
     - Show how they can be used to test CLI
+
+## References
+
+- [Tips for Writing Portable Node.js Code](https://gist.github.com/domenic/2790533)
+- [Writing cross-platform Node.js](http://shapeshed.com/writing-cross-platform-node/)
