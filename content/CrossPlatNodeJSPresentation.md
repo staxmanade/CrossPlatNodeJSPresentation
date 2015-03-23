@@ -242,6 +242,10 @@ Running unit tests on Travic-CI for mac & linux and AppVeyor for Windows
 
 ## Let's go build a CLI tool...
 
+Note:
+
+see... [/demo/README.md](/demo/README.md)
+
 ===
 
 ## References

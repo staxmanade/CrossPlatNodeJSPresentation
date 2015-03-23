@@ -1,7 +1,6 @@
 
-Create a folder to create our command in.
-
-1. Create `bin/index.js`
+1. Create a folder to create our command in.
+- Create `bin/index.js`
 
   ```
   #!/usr/bin/env node
@@ -26,4 +25,6 @@ Create a folder to create our command in.
   - to remove 'npm uninstall -g sample-cli'
 
 - create `.npmignore`
-- 
+- `npm install --save liftoff` [liftoff](https://www.npmjs.com/package/liftoff)
+- `npm install msee` for generating markdown-based console help output
+- Consider either `minimist` or `commander` for command line args parsing
