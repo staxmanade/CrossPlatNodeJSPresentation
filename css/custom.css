@@ -1,5 +1,5 @@
 
-section > p > .emoji {
+section > p > .emoji, section > h2 > .emoji {
   border: 0px solid transparent;
   width: 40px;
   background: none;
