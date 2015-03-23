@@ -1,0 +1,7 @@
+
+section > p > .emoji {
+  border: 0px solid transparent;
+  width: 40px;
+  background: none;
+  margin: 0;
+}

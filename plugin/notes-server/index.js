@@ -1,5 +1,6 @@
 var express   = require('express');
 var fs        = require('fs');
+var path = require('path');
 var io        = require('socket.io');
 var _         = require('underscore');
 var Mustache  = require('mustache');
@@ -11,7 +12,7 @@ io            = io.listen(app);
 
 var opts = {
 	port :      1947,
-	baseDir :   __dirname + '/../../'
+	baseDir :   path.normalize(path.join(__dirname, '/../../'))
 };
 
 io.sockets.on( 'connection', function( socket ) {
@@ -28,8 +29,8 @@ io.sockets.on( 'connection', function( socket ) {
 
 app.configure( function() {
 
-	[ 'css', 'js', 'images', 'plugin', 'lib' ].forEach( function( dir ) {
-		app.use( '/' + dir, staticDir( opts.baseDir + dir ) );
+	[ 'css', 'js', 'images', 'plugin', 'lib', 'content' ].forEach( function( dir ) {
+		app.use( '/' + dir, staticDir( path.normalize( path.join( opts.baseDir, dir ) ) ) );
 	});
 
 });
@@ -37,13 +38,13 @@ app.configure( function() {
 app.get('/', function( req, res ) {
 
 	res.writeHead( 200, { 'Content-Type': 'text/html' } );
-	fs.createReadStream( opts.baseDir + '/index.html' ).pipe( res );
+	fs.createReadStream( path.normalize( path.join( opts.baseDir, '/index.html' ) ) ).pipe( res );
 
 });
 
 app.get( '/notes/:socketId', function( req, res ) {
 
-	fs.readFile( opts.baseDir + 'plugin/notes-server/notes.html', function( err, data ) {
+	fs.readFile( path.normalize( path.join( opts.baseDir, 'plugin/notes-server/notes.html' ) ), function( err, data ) {
 		res.send( Mustache.to_html( data.toString(), {
 			socketId : req.params.socketId
 		}));
