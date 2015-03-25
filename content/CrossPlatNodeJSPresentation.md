@@ -252,4 +252,4 @@ If you need to get platform specific operations, you can use
 
 Note:
 
-see... [/demo/README.md](/demo/README.md)
+see... [/demo.md](/demo.md)
