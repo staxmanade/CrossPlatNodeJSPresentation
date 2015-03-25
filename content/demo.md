@@ -35,11 +35,16 @@
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 
+var getVersion = function() {
+  var packagePath = path.join(__dirname, '../package.json');
+  var version = require(packagePath).version;
+  return version;
+}
+
 var printHelpMessage = function() {
   var helpFile = path.join(__dirname, 'help.md');
   var output = require('msee').parseFile(helpFile);
-  var packagePath = path.join(__dirname, '../package.json');
-  var version = require(packagePath).version;
+  var version = getVersion();
   output = output.replace('{{version}}', version);
 
   // Some spacing formatting cleanup
@@ -49,6 +54,11 @@ var printHelpMessage = function() {
 
 if (argv.help) {
   return printHelpMessage();
+}
+
+if (argv.version) {
+  console.log(getVersion());
+  return;
 }
 
 console.log(argv);
