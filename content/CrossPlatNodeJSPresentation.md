@@ -1,12 +1,21 @@
-## Cross Platform Tools with NodeJS
-
-Note:
+# Setup
 
 1. Bump up fonts
 - Check for internet
   - bring up https://www.npmjs.com/package/module-best-practices
 - Prepare json for demo-ing json cli
-- Use `s`
+- Use `s` for access to the speaker notes
+
+===
+
+## Building Cross Platform Tools with NodeJS
+
+===
+
+# What's in the talk?
+
+- Yay - Slides (about cross plat stuff)
+- Demo - build a CLI tool
 
 ===
 ### Presented By
@@ -22,7 +31,7 @@ Note:
 
 ===
 
-## What not use
+## Why not use
 
 - C
 - Python
@@ -87,13 +96,15 @@ Let's talk about cross-plat Node.
 
 ==
 
-## Path manipulation
+## Avoid Manual Path Manipulation
 
 <img src="/images/thumbsDown.png" class='emoji' />
 
     var path = "foo" + "/" + "bar";
 
-<hr>
+==
+
+## Use Path Module
 
 <img src="/images/thumbsUp.png" class='emoji' />
 
@@ -106,22 +117,17 @@ Let's talk about cross-plat Node.
     var path = require('path');
 
     path.normalize(...)
-    path.resolve(...)  // like using "cd"
+    path.resolve(...)
     path.join(...)
 
 
 ===
 
-## Case-sensitive file names
+## Be careful with case-sensitivity
 
-<img src="/images/thumbsDown.png" class='emoji' />
+    var myModule = require('./myMODULE');
 
-    var path = require('Path');
-<hr>
-
-<img src="/images/thumbsUp.png" class='emoji' />
-
-    var path = require('path');
+    var myModule = require('./myModule');
 
 Note:
 
@@ -129,16 +135,13 @@ Windows and OSX use case-insinsitive file systems, while linux is case-sensitive
 
 ===
 
-# Environment Vars
+# Environment Vars May Differ
 
-Not all environment variable exist or are consistently named across platforms.
-
-EX:
-
-    var home = process.env.USERPROFILE || process.env.HOME;
+```
+var home = process.env.USERPROFILE || process.env.HOME;
+```
 
 ===
-
 
 ## Avoid static new lines characters
 
@@ -159,15 +162,7 @@ Use the `os` module's `EOL` property.
 
 ===
 
-## Temp files
-
-    var os = require('os');
-    var tmp = os.tmpdir();
-    console.log(tmp);
-
-===
-
-## Determine platform?
+## Platform specific code?
 
     var os = require('os');
     console.log(os.platform());
@@ -229,14 +224,27 @@ If you need to get platform specific operations, you can use
 
 ## Testing
 
-Running unit tests on Travic-CI for mac & linux and AppVeyor for Windows
+==
 
-===
-
-## Testing Tools
+## Local Testing
 
  - Mocha or Vows
  - Approvals (for testing CLI results?)
+
+===
+
+## Continuous Integration
+
+ - Mac, Linux, and Windows
+
+===
+
+## References
+
+- [https://nodejs.org/api/path.html](https://nodejs.org/api/path.html)
+- [https://nodejs.org/api/os.html](https://nodejs.org/api/os.html)
+- Tips for Writing Portable Node.js Code [https://gist.github.com/domenic/2790533](https://gist.github.com/domenic/2790533)
+- Writing cross-platform Node.js [http://shapeshed.com/writing-cross-platform-node/](http://shapeshed.com/writing-cross-platform-node/)
 
 ===
 
@@ -245,12 +253,3 @@ Running unit tests on Travic-CI for mac & linux and AppVeyor for Windows
 Note:
 
 see... [/demo/README.md](/demo/README.md)
-
-===
-
-## References
-
-- [node path docs](https://nodejs.org/api/path.html)
-- [node os docs](https://nodejs.org/api/os.html)
-- [Tips for Writing Portable Node.js Code](https://gist.github.com/domenic/2790533)
-- [Writing cross-platform Node.js](http://shapeshed.com/writing-cross-platform-node/)
