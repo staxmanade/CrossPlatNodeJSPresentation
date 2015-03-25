@@ -7,7 +7,6 @@
   console.log("HI");
   ```
 
-- Add some code to the file, ex: `console.log('sample-cli!')`
 - Create package.json with `npm init`
 - Add bin section
 
@@ -28,3 +27,30 @@
 - `npm install --save liftoff` [liftoff](https://www.npmjs.com/package/liftoff)
 - `npm install msee` for generating markdown-based console help output
 - Consider either `minimist` or `commander` for command line args parsing
+
+
+```
+#!/usr/bin/env node
+
+var path = require('path');
+var argv = require('minimist')(process.argv.slice(2));
+
+var printHelpMessage = function() {
+  var helpFile = path.join(__dirname, 'help.md');
+  var output = require('msee').parseFile(helpFile);
+  var packagePath = path.join(__dirname, '../package.json');
+  var version = require(packagePath).version;
+  output = output.replace('{{version}}', version);
+
+  // Some spacing formatting cleanup
+  output = output.replace(/&nbsp;/g, ' ');
+  console.log(output);
+};
+
+if (argv.help) {
+  return printHelpMessage();
+}
+
+console.log(argv);
+
+```
